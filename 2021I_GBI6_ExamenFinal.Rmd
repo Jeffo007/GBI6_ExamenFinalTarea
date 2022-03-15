@@ -114,10 +114,10 @@ library(ggplot2)
 library(dplyr)
 
 long_df_preselec  <- long_df 
-colnames(long_df)
+colnames(long_df_preselec)
 
-long_df_selec <- long_df_preselec %>% select(dataset, gen, expresiones_level)
-colnames(long_df_selec)
+df_long<- long_df_preselec %>% select(dataset, gen, expresiones_level)
+colnames(df_long)
 
 ```
 
