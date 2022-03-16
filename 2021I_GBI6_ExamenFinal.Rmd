@@ -77,6 +77,7 @@ Para comprender la data de esta evaluación se requiere conocer el significado d
 
 ### [0.5 PUNTOS] 1.1 Defina su directorio de trabajo. 
 ```{r wd}
+
 getwd()
 
 setwd("/home/jeffo/Documentos/GitHub/GBI6_ExamenFinalTarea")
@@ -100,6 +101,8 @@ head(df_mRNA_expr, 1)
 ```{r funcion_long}
 
 library(tidyr)
+
+
 long_df <- df_mRNA_expr %>% pivot_longer(3:9, names_to = "gen", values_to= "expresiones_level")
 
 
@@ -124,12 +127,8 @@ colnames(df_long)
 ### [0.5 PUNTOS] 1.5 A partir de la data ```df_long```, genere un **Descriptive table** (librería ```sjPlot```) y guárdelo en el subdirectorio "result"  con el nombre **mRNA_expr_summary.doc** (previamente debe seleccionar las celdas adecuadas con funciones de la librería ```dplyr``` en conjunto con el operador ```%>%```). 
 ```{r desc_table}
 
-library(devtools)
-devtools::install_github("sjPlot/devel")
-
+library(dplyr)
 library(sjPlot)
-library(Publish)
-
 
 tab_desc <- df_long %>% group_by(dataset, gen)
 descr(tab_desc, out = "viewer", file = "results/mRNA_expr_summary.doc")
