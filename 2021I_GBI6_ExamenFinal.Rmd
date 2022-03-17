@@ -139,9 +139,8 @@ descr(tab_desc, out = "viewer", file = "results/mRNA_expr_summary.doc")
 
 
 ```{tex}
-# Escriba aquí su interpretación 
 En la tabla se representa el tipo de cancer clasificado en función del gen, y 
-se puede observar la media, la desviación estandar 
+se puede observar la media, la desviación estandar, el rango, entre otros datos estadísticos. 
 ```
 
 
@@ -153,14 +152,17 @@ Para esta pregunta tiene que utilizar la data ```df_long```.
 ### [1 PUNTO] 2.1 Cree la funcion ```tcga_boxplots``` para visualizar boxplots y jitterplots. El único parámetro de la función es ```dataset```. La función debe crear un boxplot de los niveles de expresión para cada gen.
 
 ```{r}
-# Escriba el código para crear la función tcga_boxplots
+library(dplyr)
+
+str(df_long %>% group_by(dataset))
+
+tcga_boxplots <- str(df_long %>% group_by(dataset))
 
 
 ```
 
 ### [0.5 PUNTOS] 2.2 Utilizando la función ```lapply()``` genera la lista ```cancertype_boxplots``` con las gráficas para cada tipo de cancer (cada tipo de dataset). 
 ```{r list_boxplots}
-# Escriba el código para generar la lista. 
 
 
 ```
