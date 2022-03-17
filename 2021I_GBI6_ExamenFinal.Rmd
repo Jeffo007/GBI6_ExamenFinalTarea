@@ -140,7 +140,8 @@ descr(tab_desc, out = "viewer", file = "results/mRNA_expr_summary.doc")
 
 ```{tex}
 # Escriba aquí su interpretación 
-
+En la tabla se representa el tipo de cancer clasificado en función del gen, y 
+se puede observar la media, la desviación estandar 
 ```
 
 
