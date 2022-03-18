@@ -157,28 +157,33 @@ library(ggplot2)
       
 tcga_boxplot<- function(pollito) {
     filtro <- df_long %>% filter( dataset == pollito)
-     plot <- filtro %>% ggplot(aes(x=gen, y=expresion_level,  color= continent)) 
-     + geom_bloxplot() + geom_jitter(alpha=0.9, size=0.5)
+     plot <- filtro %>% ggplot(aes(x=gen, y= expresiones_level)) +             geom_boxplot() + geom_jitter(alpha=0.9, size=0.5)
 }
+
 
 ```
 
 ### [0.5 PUNTOS] 2.2 Utilizando la función ```lapply()``` genera la lista ```cancertype_boxplots``` con las gráficas para cada tipo de cancer (cada tipo de dataset). 
 ```{r list_boxplots}
-cancers <- c("RBCA","KIPAN","KIRP","LUSC","OV","UCEC")
+
+fn <- unique(df_long$dataset)
 
 cancertype_boxplots <- lapply(cancers, tcga_boxplot)
-cancertype_boxplots
+element <- length(cancertype_boxplots)
+print(element)
+cancertype_boxplots <- lapply(fn, tcga_boxplot)
+
+cancertype_boxplots [[3]]
 
 ```
 
 ### [0.5 PUNTOS] 2.3 Guarde en el subdirectorio ```result``` el tercer plot de la lista ```cancertype_boxplots``` con el nombre ```boxplot3.png```. La definición de a figura debe ser de 300dpi. 
 ```{r boxplot3}
 # Escriba el código para guardar la tercera figura de la lista. 
-
-
+library(ggplot2)
+img3 <- cancertype_boxplots [[3]]  
+ ggsave(filename="results/boxplot3.png", units="in", dpi=300 , limitsize= TRUE)
 ```
-
 
 ### [1 PUNTO] 2.4 Escriba la función ```reg_gen_expression```, con el parámetro ```gen```. En este caso la función visualizará una gráfica de nube de puntos (geom_point) y una regresión por tipo de "dataset". La gráfica será de comparación de gen1 con gen2; por ejemplo en el eje "x" ```GATA3``` y en el eje "y"" ```FN1```.  
 
