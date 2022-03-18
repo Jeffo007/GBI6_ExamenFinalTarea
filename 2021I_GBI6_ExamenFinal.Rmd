@@ -153,17 +153,22 @@ Para esta pregunta tiene que utilizar la data ```df_long```.
 
 ```{r}
 library(dplyr)
-
-str(df_long %>% group_by(dataset))
-
-tcga_boxplots <- str(df_long %>% group_by(dataset))
-
+library(ggplot2)
+      
+tcga_boxplot<- function(pollito) {
+    filtro <- df_long %>% filter( dataset == pollito)
+     plot <- filtro %>% ggplot(aes(x=gen, y=expresion_level,  color= continent)) 
+     + geom_bloxplot() + geom_jitter(alpha=0.9, size=0.5)
+}
 
 ```
 
 ### [0.5 PUNTOS] 2.2 Utilizando la función ```lapply()``` genera la lista ```cancertype_boxplots``` con las gráficas para cada tipo de cancer (cada tipo de dataset). 
 ```{r list_boxplots}
+cancers <- c("RBCA","KIPAN","KIRP","LUSC","OV","UCEC")
 
+cancertype_boxplots <- lapply(cancers, tcga_boxplot)
+cancertype_boxplots
 
 ```
 
