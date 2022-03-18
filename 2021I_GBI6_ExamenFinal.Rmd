@@ -228,7 +228,14 @@ ggsave(filename = "results/regresion11.pdf", units="in", dpi=300,limitsize=TRUE)
 ### [1 PUNTO] 2.7. Interprete los resultados de las figuras ```boxplot3.png``` y ```regresion11.pdf```.
 
 ```{tex}
-# Esciba aquí su intepretación
+##Boxplot3.png##
+El el diagrama de cajas y vigotes existe muchos datos atipicos, los puntos que representas a genes no estan conpaginados con la normal, en este sentido se puede deducir que existe un factor genotípico o fenotípico que alteran los resultados posiblemente por el ciclo celilar y exprecion genica de los distintos canceres.
+
+##regresion11.pdf##
+
+los genes involucrados PTEN y GAPDH no se evidencian en la gráfica, 
+KPAN y KIRP no poseen mucha variación sin embargo OVR y BRCA si tiene una distribución por toda la gráfica. 
+
 
 ```
 
