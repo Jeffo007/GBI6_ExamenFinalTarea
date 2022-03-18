@@ -190,7 +190,17 @@ img3 <- cancertype_boxplots [[3]]
 ```{r reg_gen_exp}
 # Escriba aquí su función reg_gen_expression
 
-
+reg_gen_expression <- function(comparison){
+  genx=d[1]
+  geny=d[2]
+  genp <- df_long %>% filter (gen == genx)
+  genq <- df_long %>% filter (gen == geny)
+  mix <- cbind(gen1,gen2) 
+  tab <- tibble("dataset"=mix[,1],"gen1"=mix[,3],"gen2"=mix[,6]) 
+  genr <- tab %>% ggplot(aes(x = gen1, y = gen2, color=dataset)) + geom_point() + geom_smooth(method=lm, se=FALSE)
+  gener
+}
+   
 ```
 
 
