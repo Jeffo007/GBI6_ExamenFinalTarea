@@ -191,14 +191,14 @@ img3 <- cancertype_boxplots [[3]]
 # Escriba aquí su función reg_gen_expression
 
 reg_gen_expression <- function(comparison){
-  genx=d[1]
-  geny=d[2]
+  genx=comparison[1]
+  geny=comparison[2]
   genp <- df_long %>% filter (gen == genx)
   genq <- df_long %>% filter (gen == geny)
-  mix <- cbind(gen1,gen2) 
+  mix <- cbind(genp,genq) 
   tab <- tibble("dataset"=mix[,1],"gen1"=mix[,3],"gen2"=mix[,6]) 
-  genr <- tab %>% ggplot(aes(x = gen1, y = gen2, color=dataset)) + geom_point() + geom_smooth(method=lm, se=FALSE)
-  gener
+  r <- tab %>% ggplot(aes(x = gen1, y = gen2, color=dataset)) + geom_point() + geom_smooth(method=lm, se=FALSE)
+  r
 }
    
 ```
@@ -206,7 +206,13 @@ reg_gen_expression <- function(comparison){
 
 ### [0.5 PUNTOS] 2.5. Utilizando la función ```lapply()``` genera la lista ```reg_genplots``` con las gráficas para cada par de genes posibles. Recuerde que tiene 7 tipos de genes, se debe tener todas las combinaciones posibles por pares de genes (combinatoria sin repetición).
 ```{r list_regplots}
-# Escriba el código para generar la lista. 
+lol <- unique(df_long$gen)  
+ta <- combn(lol,m=2,simplify = FALSE) 
+reg_genplots <- lapply(ta,function(gen) try(reg_gen_expression(gen)))
+reg_genplots <- lapply(tabcomb,reg_gen_expression)
+print (paste("# ", length(reg_genplots)))
+print ("img 11") 
+reg_genplots[[11]] 
 
 ```
 
